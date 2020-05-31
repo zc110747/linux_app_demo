@@ -11,7 +11,7 @@
 #define net_port 	8000
 #define ip_addr     "127.0.0.1"
 
-int main(void)
+int main(int argc, char* argv[])
 {
     int socket_fd;
     struct sockaddr_in servaddr;
