@@ -1,0 +1,1 @@
+kill -9 `ps -ef| grep ./tcp_server | awk '{print $2}'`

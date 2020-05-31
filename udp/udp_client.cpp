@@ -11,24 +11,19 @@
 #define net_port 	8000
 #define ip_addr     "127.0.0.1"
 
- 
-void echo_cli(int sock)
-{
-
-}
-
 int main(void)
 {
-    int sock;
+    int socket_fd;
     struct sockaddr_in servaddr;
-    int ret;
+    int recv_len;
     char sendbuf[1024] = "udp send hello world!";
     char recvbuf[1024] = {0};
 
-    if ((sock = socket(PF_INET, SOCK_DGRAM, 0)) < 0)
+    /*创建socket接口, SOCK_DGRAM表示无连接的udp接口*/
+    if ((socket_fd = socket(PF_INET, SOCK_DGRAM, 0)) < 0)
     {
-        printf("socket err\n");
-        return sock;
+        printf("socket init err\n");
+        return socket_fd;
     }
     memset(&servaddr, 0, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
@@ -37,20 +32,18 @@ int main(void)
 
     /*通过udp通道发送数据到服务器*/
     printf("client send:%s, len:%d\n",sendbuf, (int)strlen(sendbuf));
-    sendto(sock, sendbuf, strlen(sendbuf), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));  
+    sendto(socket_fd, sendbuf, strlen(sendbuf), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));  
     
     /*等待服务器返回数据*/
-    ret = recvfrom(sock, recvbuf, sizeof(recvbuf), 0, NULL, NULL);
-    if (ret == -1)
+    recv_len = recvfrom(socket_fd, recvbuf, sizeof(recvbuf), 0, NULL, NULL);
+    if (recv_len == -1)
     {
         printf("socket receive error\n");
-        close(sock);
-        return -1;
     }
     else
     {
-        printf("client recv:%s\n",recvbuf);
+        printf("client recv:%s, len:%d\n", recvbuf, recv_len);
     }
-    close(sock);
+    close(socket_fd);
     return 0;
 }
