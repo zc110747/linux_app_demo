@@ -1,4 +1,13 @@
-﻿#include <unistd.h>
+﻿/**********************************************************
+ * 说明: tcp客户端应用
+ * tcp应用主要涉及接口包含
+ * socket 创建socket接口的实现
+ * connect 连接到指定的网络端口
+ * send TCP数据发送
+ * recv TCP数据接收
+ * close socket连接关闭
+************************************************************/
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>

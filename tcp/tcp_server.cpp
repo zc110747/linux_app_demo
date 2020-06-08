@@ -1,4 +1,14 @@
-﻿#include<stdio.h>
+﻿/**********************************************************
+ * 说明: tcp客户端应用
+ * tcp应用主要涉及接口包含
+ * socket 创建socket接口的实现
+ * bind 绑定网络通讯到指定的网络端口
+ * accept 等待客户端的网络连接
+ * send TCP数据发送
+ * recv TCP数据接收
+ * close socket连接关闭
+************************************************************/
+#include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
 #include<errno.h>

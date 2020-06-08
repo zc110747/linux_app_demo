@@ -1,4 +1,14 @@
-﻿#include <unistd.h>
+﻿/**********************************************************
+ * 说明: udp客户端应用
+ * udp主要涉及接口包含
+ * socket 创建socket接口的实现
+ * sendto UDP数据发送
+ * recvfrom UDP数据接收
+ * close socket连接关闭
+ * 注意:默认配置下recvfrom读取会清除接收缓存，分多次接收需要修改
+ * flag
+************************************************************/
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>

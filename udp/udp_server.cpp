@@ -1,4 +1,15 @@
-﻿#include<stdio.h>
+﻿/**********************************************************
+ * 说明: udp服务器应用
+ * udp主要涉及接口包含
+ * socket 创建socket接口的实现
+ * bind 绑定UDP通讯到指定的网络端口
+ * recvfrom UDP数据接收
+ * sendto UDP数据发送
+ * close socket连接关闭
+ * 注意:默认配置下recvfrom读取会清除接收缓存，分多次接收需要修改
+ * flag
+************************************************************/
+#include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
 #include<errno.h>
