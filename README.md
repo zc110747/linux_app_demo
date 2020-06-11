@@ -3,6 +3,7 @@
 方便后续查询和使用    
 内部所有代码在Ubuntu16.04或WSL-Ubuntu20.04上测试    
 
+
 file_io/ Linux文件I/O操作  
 Linux中设备的访问也以一切皆文件的思想存在，所以文件I/O是最常用的接口。 
 ```c
@@ -17,6 +18,7 @@ int close(int fd);
 //移动文件指针偏移地址,和read配合使用从指定起始地址读取数据  
 off_t lseek(int fildes,off_t offset ,int whence);
 ```  
+
 
 pthread/ Linux多线程接口  
 多线程编译需要添加-lpthread
@@ -44,9 +46,11 @@ pthread_spin_trylock(&m_spinlock);
 pthread_spin_unlock(&m_spinlock);  
 ```
 
+
 stl/ C++标准模板库  
 目前包含vector, list, 后续计划添加map, set, deque, tree等  
 stl的具体接口说明在下级目录完善  
+
 
 tcp/ 用于TCP客户端和服务器的demo  
 TCP客户端接口
@@ -68,6 +72,7 @@ int bind(int sockfd, const struct sockaddr* my_addr, socklen_t addrlen);
 //TCP等待客户端的连接  
 int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);  
 ```
+
 
 udp/ 用于UDP客户端和服务器的demo  
 UDP客户端接口
