@@ -1,4 +1,4 @@
-# embed_linux_demo
+# linux c/c++ demo
 用于保存Linux应用层接口和STL应用接口demo的仓库  
 方便后续查询和使用    
 内部所有代码在Ubuntu16.04或WSL-Ubuntu20.04上测试    
