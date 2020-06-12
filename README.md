@@ -50,7 +50,7 @@ stl的具体接口说明在下级目录完善
 
 
 ## tcp/ 用于TCP客户端和服务器的demo  
-### TCP客户端接口
+TCP客户端接口
 ```c
 //创建网络套接字    
 int socket(int domain, int type, int protocol)    
@@ -61,7 +61,7 @@ ssize_t write(int fd, const void *buf, size_t count);
 //从连接的服务器读取TCP数据  
 ssize_t read(int fd, void *buf, size_t count);  
 ```
-### TCP服务器接口  
+TCP服务器接口  
 在包含上述客户端接口外，额外需要服务器绑定的接口和等待连接的接口  
 ```c
 //TCP服务器绑定到指定的IP地址和客户端  
@@ -72,7 +72,7 @@ int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
 
 
 ## udp/ 用于UDP客户端和服务器的demo  
-### UDP客户端接口
+UDP客户端接口
 ```c
 //创建网络套接字  
 int socket(int domain, int type, int protocol)  
@@ -85,7 +85,7 @@ ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags,
 //关闭Socket通讯  
 int close(int fd); 
 ```
-### UDP服务器接口  
+UDP服务器接口  
 在包含上述客户端接口外，额外需要服务器绑定的接口  
 ```c
 //UDP服务器绑定到指定的IP地址和客户端  
