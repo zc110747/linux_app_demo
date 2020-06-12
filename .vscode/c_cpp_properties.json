@@ -3,12 +3,14 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${env.includePATH}" 
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
-                "_UNICODE"
+                "_UNICODE",
+                "__ARM_PCS_VFP"
             ],
             "windowsSdkVersion": "8.1",
             "compilerPath": "D:/Software/Visual Studio 2015/VC/bin/cl.exe",
