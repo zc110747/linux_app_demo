@@ -3,8 +3,7 @@
 方便后续查询和使用    
 内部所有代码在Ubuntu16.04或WSL-Ubuntu20.04上测试    
 
-
-file_io/ Linux文件I/O操作  
+## file_io/ Linux文件I/O操作  
 Linux中设备的访问也以一切皆文件的思想存在，所以文件I/O是最常用的接口。 
 ```c
 //打开文件,获得文件描述符
@@ -18,9 +17,8 @@ int close(int fd);
 //移动文件指针偏移地址,和read配合使用从指定起始地址读取数据  
 off_t lseek(int fildes,off_t offset ,int whence);
 ```  
-
-
-pthread/ Linux多线程接口  
+  
+## pthread/ Linux多线程接口  
 多线程编译需要添加-lpthread
 ```c
 //线程的创建  
@@ -46,14 +44,13 @@ pthread_spin_trylock(&m_spinlock);
 pthread_spin_unlock(&m_spinlock);  
 ```
 
-
-stl/ C++标准模板库  
+## stl/ C++标准模板库  
 目前包含vector, list, 后续计划添加map, set, deque, tree等  
 stl的具体接口说明在下级目录完善  
 
 
-tcp/ 用于TCP客户端和服务器的demo  
-TCP客户端接口
+## tcp/ 用于TCP客户端和服务器的demo  
+### TCP客户端接口
 ```c
 //创建网络套接字    
 int socket(int domain, int type, int protocol)    
@@ -64,7 +61,7 @@ ssize_t write(int fd, const void *buf, size_t count);
 //从连接的服务器读取TCP数据  
 ssize_t read(int fd, void *buf, size_t count);  
 ```
-TCP服务器接口  
+### TCP服务器接口  
 在包含上述客户端接口外，额外需要服务器绑定的接口和等待连接的接口  
 ```c
 //TCP服务器绑定到指定的IP地址和客户端  
@@ -74,8 +71,8 @@ int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
 ```
 
 
-udp/ 用于UDP客户端和服务器的demo  
-UDP客户端接口
+## udp/ 用于UDP客户端和服务器的demo  
+### UDP客户端接口
 ```c
 //创建网络套接字  
 int socket(int domain, int type, int protocol)  
@@ -88,7 +85,7 @@ ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags,
 //关闭Socket通讯  
 int close(int fd); 
 ```
-UDP服务器接口  
+### UDP服务器接口  
 在包含上述客户端接口外，额外需要服务器绑定的接口  
 ```c
 //UDP服务器绑定到指定的IP地址和客户端  
