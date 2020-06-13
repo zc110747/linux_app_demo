@@ -1,6 +1,5 @@
 # linux c/c++ demo
-用于保存Linux应用层接口和STL应用接口demo的仓库  
-方便后续查询和使用    
+用于保存Linux应用层接口和STL应用接口demo的仓库方便后续查询和使用  
 内部所有代码在Ubuntu16.04或WSL-Ubuntu20.04上测试    
 
 ## file_io/ Linux文件I/O操作  
@@ -17,7 +16,21 @@ int close(int fd);
 //移动文件指针偏移地址,和read配合使用从指定起始地址读取数据  
 off_t lseek(int fildes,off_t offset ,int whence);
 ```  
-  
+
+
+## msg_queue/ Linux进程间消息队列处理
+对于任何满足权限的线程，都允许从消息队列里读取和写入消息
+```c
+//创建消息队列
+int msgget(key_t key, int oflg);
+//从消息队列里读取数据
+ssize_t msgrcv(int msqid, void *ptr, size_t length, long type, int flag);
+//创建一个新的消息队列或访问一个已存在的消息队列
+int msgsnd(int msqid, const void *ptr, size_t length, int flag);
+//提供在一个消息队列上的各种控制操作
+int msgctl(int msqid, int cmd, struct msqid_ds *buff);
+```
+
 ## pthread/ Linux多线程接口  
 多线程编译需要添加-lpthread
 ```c
@@ -42,7 +55,18 @@ pthread_spin_destroy(&m_spinlock);
 pthread_spin_lock(&m_spinlock);  
 pthread_spin_trylock(&m_spinlock);  
 pthread_spin_unlock(&m_spinlock);  
-```
+```  
+
+
+## pipe/ 用于进程间通讯的管道
+```c
+//创建pipe通道的实现, 其中fd[0]为读管道描述符，fd[1]为数据写管道描述符
+int pipe(int fd[2])
+//从管道描述符中读取数据  
+ssize_t read(int fd,void * buf,size_t count);  
+//向管道描述符中写入数据
+ssize_t write (int fd,const void *buf,size_t count);  
+```  
 
 ## stl/ C++标准模板库  
 目前包含vector, list, 后续计划添加map, set, deque, tree等  
@@ -91,3 +115,4 @@ UDP服务器接口
 //UDP服务器绑定到指定的IP地址和客户端  
 int bind(int sockfd, const struct sockaddr* my_addr, socklen_t addrlen);  
 ```
+考虑到Linux系统API的复杂性，这里还是以我熟悉和使用到的为主，如果没有列出，不是不重要，而是可能我在开发中并没有遇到，或者我还没有开始列出，如果觉得一些接口十分重要，而demo应用中还缺失，欢迎提交issue。  
