@@ -1,6 +1,9 @@
 # linux c/c++ demo
 用于保存Linux应用层接口和STL应用接口demo的仓库方便后续查询和使用  
-内部所有代码在Ubuntu16.04或WSL-Ubuntu20.04上测试    
+仅提供相关的应用demo, 除必要的注释外不会讲解相关说明，如果有需要更深入了解，建议自行搜索以及推荐以下书籍查找
+《UNIX环境高级编程》
+《UNIX网络编程 卷2：进程间通信》
+内部所有代码在Ubuntu16.04或WSL2-Ubuntu20.04上测试    
 
 ## file_io/ Linux文件I/O操作  
 Linux中设备的访问也以一切皆文件的思想存在，所以文件I/O是最常用的接口。 
@@ -94,6 +97,14 @@ int bind(int sockfd, const struct sockaddr* my_addr, socklen_t addrlen);
 int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);  
 ```
 
+## timer
+Linux软件定时器
+```c
+//用于连接信号和处理函数的实现
+sighandler_t signal(int signum, sighandler_t handler);
+//创建软件定时器的函数
+int setitimer(int which, const struct itimerval *value, struct itimerval *ovalue));
+```
 
 ## udp/ 用于UDP客户端和服务器的demo  
 UDP客户端接口
@@ -115,4 +126,5 @@ UDP服务器接口
 //UDP服务器绑定到指定的IP地址和客户端  
 int bind(int sockfd, const struct sockaddr* my_addr, socklen_t addrlen);  
 ```
-考虑到Linux系统API的复杂性，这里还是以我熟悉和使用到的为主，如果没有列出，不是不重要，而是可能我在开发中并没有遇到，或者我还没有开始列出，如果觉得一些接口十分重要，而demo应用中还缺失，欢迎提交issue。  
+
+考虑到Linux系统API的复杂性，这里还是以我熟悉和使用到的为主，如果没有列出，不是不重要，而是可能我在开发中并没有遇到，或者我正在，如果觉得一些接口十分重要，而demo应用中还缺失，欢迎提交issue。  
