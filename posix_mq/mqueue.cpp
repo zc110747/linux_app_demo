@@ -26,10 +26,11 @@ int main(int argc, char* argv[])
     int nReadSize;
     unsigned int prio;
 
-    mq_attr_info.mq_maxmsg = 6;
-    mq_attr_info.mq_msgsize = 10;
+    mq_attr_info.mq_maxmsg = 12;
+    mq_attr_info.mq_msgsize = 128;
 
     //创建消息队列
+    mq_unlink("/MainMq");
     mqd_info = mq_open("/MainMq", O_RDWR | O_CREAT, 0666, &mq_attr_info);
     if(mqd_info < 0){
         printf("mq create error:%s\n", strerror(errno));
@@ -40,6 +41,7 @@ int main(int argc, char* argv[])
     mq_getattr(mqd_info, &mq_attr_info);
     if(mq_attr_info.mq_msgsize != 0)
     {
+        printf("msgsize:%d, maxmsg:%d\n", (int)mq_attr_info.mq_msgsize, (int)mq_attr_info.mq_maxmsg);
         pbuffer = (char *)malloc(mq_attr_info.mq_msgsize);
         if(pbuffer == nullptr)
         {
@@ -66,11 +68,10 @@ int main(int argc, char* argv[])
         printf("receive:%s, len:%d\n", pbuffer, nReadSize);
     }
 
+    printf("test success, finish\n");
     free(pbuffer);
     pbuffer = nullptr;
-    close(mqd_info);
-
-    sleep(10);    
+    mq_close(mqd_info); 
     return 0;
 }
 
@@ -79,7 +80,11 @@ void *thread_loop_func0(void *arg)
     printf("thread start ok\n");
 
     //向队列投递消息
-    mq_send(mqd_info, "mq rx/tx test\n", strlen("mq rx/tx test\n"), 0);
+    if(mq_send(mqd_info, "mq\n", strlen("mq\n"), 0) < 0)
+    {
+        printf("mq send error:%s\n", strerror(errno));
+        mq_close(mqd_info);
+    }
     pthread_detach(pthread_self()); //分离线程, 此时线程与创建的进程无关，后续执行join返回值22
     pthread_exit((void *)0);
 }
