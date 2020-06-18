@@ -13,6 +13,7 @@
         "xhash": "cpp",
         "xstring": "cpp",
         "xutility": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "*.tcc": "cpp"
     }
 }

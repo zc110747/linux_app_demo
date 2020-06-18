@@ -8,7 +8,8 @@
  * msgctrl 操作消息队列的实现
  * 删除消息的脚本:
  * ipcs -q | grep '^[0-9]' | awk '{system("ipcrm msg "$2"")}'
- * 消息队列代码在WSL上测试不成功
+ * 消息队列代码在WSL上测试不成功，WSL不支持该接口，
+ * WSL2上以修改该bug
 ************************************************************/
 #include <sys/msg.h>
 #include <stdio.h>

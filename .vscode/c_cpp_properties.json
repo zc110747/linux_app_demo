@@ -3,20 +3,22 @@
         {
             "name": "Win32",
             "includePath": [
-                "${env.includePATH}",
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${env.includePATH}"
             ],
             "defines": [
+                "__cplusplus=201711L",
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE",
-                "__ARM_PCS_VFP"
+                "__ARM_PCS_VFP",
+                "_BSD_SOURCE"
             ],
             "windowsSdkVersion": "8.1",
-            "compilerPath": "D:/Software/Visual Studio 2015/VC/bin/cl.exe",
+            "compilerPath": "D:/Software/mingw64/bin/g++.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "msvc-x64"
+            "intelliSenseMode": "gcc-x64"
         }
     ],
     "version": 4

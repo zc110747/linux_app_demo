@@ -71,7 +71,7 @@ ssize_t read(int fd,void * buf,size_t count);
 ssize_t write (int fd,const void *buf,size_t count);  
 ```  
 
-## stl/ C++标准模板库  
+## cplusplus/ 和C++相关的demo例程，包含常用C++库以及STL等  
 目前包含vector, list, 后续计划添加map, set, deque, tree等  
 stl的具体接口说明在下级目录完善  
 
