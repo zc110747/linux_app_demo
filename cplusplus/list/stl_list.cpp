@@ -4,13 +4,13 @@
  * list每次插入和删除元素，都会配置和释放空间，运用更精准
  * list常用方法
  * size, reserve 获取容量和容器大小调整
- * push_back, push_front 在列表的首尾插入数据
- * pop_front, pop_back  删除列表的首尾数据
- * erase, remove, clear 删除某个迭代器，值或全部元素
- * unique 去除容器内相邻的重复元素
- * splice 剪切后一个List，插入到前List中, 剪切后后一个列表被释放
- * merge 两个列表的合并, 合并后后一个列表被释放
- * sort 排序
+ * push_back, push_front    在列表的首尾插入数据
+ * pop_front, pop_back      删除列表的首尾数据
+ * erase, remove, clear     删除某个迭代器，值或全部元素
+ * unique   去除容器内相邻的重复元素
+ * splice   剪切后一个List，插入到前List中, 剪切后后一个列表被释放
+ * merge    两个列表的合并, 合并后后一个列表被释放
+ * sort     排序
 ************************************************************/
 #include <list>
 #include <iostream>

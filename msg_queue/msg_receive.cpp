@@ -5,7 +5,7 @@
  * msgget 创建消息队列
  * msgrcv 从消息队列中读取数据
  * msgsnd  向消息队列中写入数据
- * msgctrl 操作消息队列的实现
+ * msgctrl 操作消息队列接口
  * 删除消息的脚本:
  * ipcs -q | grep '^[0-9]' | awk '{system("ipcrm msg "$2"")}'
  * 消息队列代码在WSL上测试不成功，WSL不支持该接口，

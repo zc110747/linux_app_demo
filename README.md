@@ -3,27 +3,31 @@
 仅提供相关的应用demo, 除必要的注释外不会讲解相关说明，如果有需要更深入了解，建议自行搜索以及推荐以下书籍查找
 《UNIX环境高级编程》
 《UNIX网络编程 卷2：进程间通信》
-内部所有代码在Ubuntu16.04或WSL2-Ubuntu20.04上测试    
+具体例程应用demo可查看相应的路径文件夹, 部分代码在WSL或WSL2可能执行不正常，在注释中会有相关说明。
+另外，因为个人精力和时间关系，可能有遗漏不全或者错误的部分, 如果发现可以及时反馈。
+
+## cplusplus/ 和C++相关的demo例程，包含常用C++库以及STL等  
+目前包含vector, list, 后续计划添加map, set, deque, tree等  
+stl的具体接口说明在下级目录完善  
 
 ## file_io/ Linux文件I/O操作  
 Linux中设备的访问也以一切皆文件的思想存在，所以文件I/O是最常用的接口。 
-```c
+```cpp
 //打开文件,获得文件描述符
 int open(const char *pathname, int oflag,...);  
 //从文件中读取数据  
-ssize_t read(int fd,void * buf ,size_t count);  
+ssize_t read(int fd, void * buf, size_t count);  
 //向文件中写入数据  
-ssize_t write (int fd,const void * buf,size_t count);  
+ssize_t write (int fd, const void * buf, size_t count);  
 //关闭文件描述符  
 int close(int fd);  
 //移动文件指针偏移地址,和read配合使用从指定起始地址读取数据  
-off_t lseek(int fildes,off_t offset ,int whence);
+off_t lseek(int fildes, off_t offset, int whence);
 ```  
-
 
 ## msg_queue/ Linux进程间消息队列处理
 对于任何满足权限的线程，都允许从消息队列里读取和写入消息
-```c
+```cpp
 //创建消息队列
 int msgget(key_t key, int oflg);
 //从消息队列里读取数据
@@ -60,21 +64,34 @@ pthread_spin_trylock(&m_spinlock);
 pthread_spin_unlock(&m_spinlock);  
 ```  
 
-
 ## pipe/ 用于进程间通讯的管道
 ```c
-//创建pipe通道的实现, 其中fd[0]为读管道描述符，fd[1]为数据写管道描述符
-int pipe(int fd[2])
-//从管道描述符中读取数据  
-ssize_t read(int fd,void * buf,size_t count);  
-//向管道描述符中写入数据
-ssize_t write (int fd,const void *buf,size_t count);  
+//创建pipe通道, 其中fd[0]为数据读管道描述符，fd[1]为数据写管道描述符
+int pipe(int fd[2]);
+//通过管道描述符从管道中读取数据  
+ssize_t read(int fd, void * buf, size_t count);  
+//通过管道描述符向管道中写入数据
+ssize_t write (int fd, const void *buf, size_t count);  
+//关闭通道的接口应用
+int close(int fd);
 ```  
 
-## cplusplus/ 和C++相关的demo例程，包含常用C++库以及STL等  
-目前包含vector, list, 后续计划添加map, set, deque, tree等  
-stl的具体接口说明在下级目录完善  
-
+## posix_mq/ 基于posix接口的消息队列
+```cpp
+//删除已经存在的消息队列
+int mq_unlink(const char *name);    
+//打开或者创建一个消息队列
+mqd_t mq_open(const char *name, int oflag, ... 
+/*mode_t mode, struct mq_attr *attr*/);
+//关闭消息队列  
+int mq_close(mqd_t mqdes);
+//获取消息队列的具体参数信息
+int mq_getattr(mqd_t mqdes, struct mq_attr *attr);
+//投递数据给消息队列
+int mq_send(mqd_t mqdes, const char *ptr, size_t len, unsigned int prio);
+//等待消息队列有消息接收
+ssize_t mq_receive(mqd_t mqdes, const char *ptr, size_t len, unsigned int *prio);   
+```
 
 ## tcp/ 用于TCP客户端和服务器的demo  
 TCP客户端接口
@@ -87,6 +104,8 @@ int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 ssize_t write(int fd, const void *buf, size_t count);  
 //从连接的服务器读取TCP数据  
 ssize_t read(int fd, void *buf, size_t count);  
+//关闭Socke通讯
+int close(int fd);
 ```
 TCP服务器接口  
 在包含上述客户端接口外，额外需要服务器绑定的接口和等待连接的接口  
@@ -127,4 +146,3 @@ UDP服务器接口
 int bind(int sockfd, const struct sockaddr* my_addr, socklen_t addrlen);  
 ```
 
-考虑到Linux系统API的复杂性，这里还是以我熟悉和使用到的为主，如果没有列出，不是不重要，而是可能我在开发中并没有遇到，或者我正在，如果觉得一些接口十分重要，而demo应用中还缺失，欢迎提交issue。  

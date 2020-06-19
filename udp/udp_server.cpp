@@ -6,8 +6,7 @@
  * recvfrom UDP数据接收
  * sendto UDP数据发送
  * close socket连接关闭
- * 注意:默认配置下recvfrom读取会清除接收缓存，分多次接收需要修改
- * flag
+ * 注意:默认配置下recvfrom读取会清除接收缓存，需要多次读取需要修改读取flag
 ************************************************************/
 #include<stdio.h>
 #include<stdlib.h>

@@ -4,7 +4,7 @@
  * 与数组的操作类似，较大的区别是vector对于空间的运用更加灵活
  * vector常用方法
  * size, push_back, pop_back, size, insert
- * erase, clear只清除变量，不释放空间
+ * erase, clear         只清除变量，不释放空间
  * capacity, resize,
  * reserve
 ************************************************************/
