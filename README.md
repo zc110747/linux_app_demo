@@ -25,6 +25,17 @@ int close(int fd);
 off_t lseek(int fildes, off_t offset, int whence);
 ```  
 
+## fork/ 进程创建和应用
+Linux通过fork创建进程，复制资源
+```cpp
+//系统调用创建和原进程资源一致的的新进程(会复制资源重新分配)
+__pid_t fork(void);
+//获得当前进程的pid值
+__pid_t getpid(void);
+//获得当前进程的父进程pid值
+__pid_t getppid(void);
+```
+
 ## msg_queue/ Linux进程间消息队列处理
 对于任何满足权限的线程，都允许从消息队列里读取和写入消息
 ```cpp
