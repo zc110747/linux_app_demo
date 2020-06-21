@@ -14,6 +14,14 @@
         "xstring": "cpp",
         "xutility": "cpp",
         "utility": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "optional": "cpp",
+        "istream": "cpp",
+        "system_error": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "string_view": "cpp"
     }
 }
