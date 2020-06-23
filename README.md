@@ -6,6 +6,28 @@
 具体例程应用demo可查看相应的路径文件夹, 部分代码在WSL或WSL2可能执行不正常，在注释中会有相关说明。
 另外，因为个人精力和时间关系，可能有遗漏不全或者错误的部分, 如果发现可以及时反馈。
 
+## base_api Linux基础API相关接口
+```cpp
+//打开文件夹路径
+DIR *opendir (const char *__name);
+//读取路径信息
+struct dirent *readdir (DIR *__dirp);
+//关闭文件夹
+int closedir (DIR *__dirp);
+//创建文件夹
+int mkdir (const char *__path, __mode_t __mode);
+//获取进程ID
+__pid_t getpid (void);
+//获取组ID
+__uid_t getuid (void);
+//输出错误信息
+void perror (const char *__s);
+//获取当前时间信息
+time_t time (time_t *__timer);
+//根据解析值获取变量
+int getopt (int ___argc, char *const *___argv, const char *__shortopts);
+```
+
 ## cplusplus/ 和C++相关的demo例程，包含常用C++库以及STL等  
 目前包含vector, list, 后续计划添加map, set, deque, tree等  
 stl的具体接口说明在下级目录完善  

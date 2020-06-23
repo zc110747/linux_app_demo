@@ -6,6 +6,7 @@
  * getpid/getuid 获得进程的id和组id
  * perror 测试错误输出
  * getopt/optarg 解析命令行参数
+ * time 获取当前的time信息
 ************************************************************/
 #include <unistd.h>
 #include <dirent.h>
@@ -54,10 +55,10 @@ int main(int argc, char *argv[])
 
     //opt
     //:表示后面必须带参数, ::表示不一定带参数
-    while((c = getopt(argc, argv, "v::h::"))!= -1){
+    while((c = getopt(argc, argv, "v::h:"))!= -1){
         switch(c){
             case 'v':
-                printf("version 0.0.1");
+                printf("version 0.0.1\n");
             break;
             case 'h':
                 if(optarg != NULL){
