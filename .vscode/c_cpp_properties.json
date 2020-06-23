@@ -3,8 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**",
-                "${env.includePATH}"
+                "${env.includePATH}",
+                "${workspaceFolder}/**"
             ],
             "defines": [
                 "__cplusplus=201711L",
@@ -12,7 +12,9 @@
                 "UNICODE",
                 "_UNICODE",
                 "__ARM_PCS_VFP",
-                "_BSD_SOURCE"
+                "_BSD_SOURCE",
+                "__need_timer_t",
+                "__GNU_LIBRARY__"
             ],
             "windowsSdkVersion": "8.1",
             "compilerPath": "D:/Software/mingw64/bin/g++.exe",
