@@ -14,7 +14,8 @@
                 "__ARM_PCS_VFP",
                 "_BSD_SOURCE",
                 "__need_timer_t",
-                "__GNU_LIBRARY__"
+                "__GNU_LIBRARY__",
+                "_XOPEN_SOURCE"
             ],
             "windowsSdkVersion": "8.1",
             "compilerPath": "D:/Software/mingw64/bin/g++.exe",

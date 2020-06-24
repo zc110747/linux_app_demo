@@ -126,6 +126,20 @@ int mq_send(mqd_t mqdes, const char *ptr, size_t len, unsigned int prio);
 ssize_t mq_receive(mqd_t mqdes, const char *ptr, size_t len, unsigned int *prio);   
 ```
 
+## system_env 系统环境变量访问
+```cpp
+//获取系统环境变量
+char *getenv(const char *name);
+//添加和修改环境变量
+int setenv(const char *name, const char *value, int rewrite);
+//删除环境变量
+int unsetenv(const char *name);
+//写入环境变量，覆盖或者添加, 和setenv功能类似，实现上格式为name=string
+char *putenv(char *str); 
+//执行调用其它程序或者指令
+int system (const char *__command);
+```
+
 ## tcp/ 用于TCP客户端和服务器的demo  
 TCP客户端接口
 ```c
