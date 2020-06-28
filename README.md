@@ -29,8 +29,26 @@ int getopt (int ___argc, char *const *___argv, const char *__shortopts);
 ```
 
 ## cplusplus/ 和C++相关的demo例程，包含常用C++库以及STL等  
-目前包含vector, list, 后续计划添加map, set, deque, tree等  
+目前包含vector, list, string,
+后续计划添加map, set, deque, tree等。  
 stl的具体接口说明在下级目录完善  
+
+## fifo/ Linux命名先入先出管道通讯  
+用于Linux进程间通讯的命名先入先出管道
+```cpp
+//用于创建fifo管道的应用实现
+int mkfifo (const char *__path, __mode_t __mode);
+//打开FIFO管道,获取后续使用的描述符
+int open(const char *pathname, int oflag,...);  
+//从FIFO管道中读取数据  
+ssize_t read(int fd, void * buf, size_t count);  
+//向FIFO管道写入数据  
+ssize_t write (int fd, const void * buf, size_t count);  
+//关闭FIFO管道
+int close(int fd);  
+//移除FIFO管道
+int unlink (const char *__name);
+```  
 
 ## file_io/ Linux文件I/O操作  
 Linux中设备的访问也以一切皆文件的思想存在，所以文件I/O是最常用的接口。 
