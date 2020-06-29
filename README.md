@@ -160,7 +160,7 @@ int system (const char *__command);
 
 ## tcp/ 用于TCP客户端和服务器的demo  
 TCP客户端接口
-```c
+```cpp
 //创建网络套接字    
 int socket(int domain, int type, int protocol)    
 //TCP握手连接到指定IP地址和端口  
@@ -174,25 +174,44 @@ int close(int fd);
 ```
 TCP服务器接口  
 在包含上述客户端接口外，额外需要服务器绑定的接口和等待连接的接口  
-```c
+```cpp
 //TCP服务器绑定到指定的IP地址和客户端  
 int bind(int sockfd, const struct sockaddr* my_addr, socklen_t addrlen);  
 //TCP等待客户端的连接  
 int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);  
 ```
 
-## timer
-Linux软件定时器
-```c
+## signal/ Linux软件定时器和信号触发
+```cpp
 //用于连接信号和处理函数的实现
 sighandler_t signal(int signum, sighandler_t handler);
 //创建软件定时器的函数
 int setitimer(int which, const struct itimerval *value, struct itimerval *ovalue));
 ```
 
+## time 系统时间处理的接口
+```cpp
+//获取系统的日历时间，以1970-1-1, 00:00:00开始
+time_t time (time_t *__timer);
+//根据日历时间获取GMT时间的函数
+struct tm *gmtime (const time_t *__timer);
+struct tm *gmtime_r (const time_t *__restrict __timer,  struct tm *__restrict __tp)
+//获取本地时间的函数
+struct tm *localtime (const time_t *__timer);
+struct tm *localtime_r (const time_t *__restrict __timer, struct tm *__restrict __tp)
+//根据本地时间生成时间字符串
+char *asctime (const struct tm *__tp);
+char *asctime_r (const struct tm *__restrict __tp, char *__restrict __buf);
+//根据日历时间生成时间字符串
+char *ctime (const time_t *__timer);
+char *ctime_r (const time_t *__restrict __timer, char *__restrict __buf);
+//将带时区的时间转换成秒数
+time_t mktime (struct tm *__tp);
+```
+
 ## udp/ 用于UDP客户端和服务器的demo  
 UDP客户端接口
-```c
+```cpp
 //创建网络套接字  
 int socket(int domain, int type, int protocol)  
 //UDP数据发送  

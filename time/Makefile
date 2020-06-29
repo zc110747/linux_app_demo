@@ -5,8 +5,8 @@ CFLAGS  := -O3 -std=c++11 -lpthread
 #头文件路径
 LOWERAPP_INC_ROOT = ../
 
-OBJS = timer.o 
-APP = timer
+OBJS = time.o 
+APP = time
 
 LOWERAPP_INC= -I $(LOWERAPP_INC_ROOT)
 INCLUDE_PATH = $(LOWERAPP_INC)
