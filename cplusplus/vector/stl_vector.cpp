@@ -74,6 +74,7 @@ int main(int argc, char* argv[])
              return true;
         return false;
     });
+    sort(v0.begin(), v1.begin());
     for_each(v1.begin(), v1.end(), [](int &value){
         cout<<value<<" ";
     });

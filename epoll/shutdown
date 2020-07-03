@@ -1,0 +1,1 @@
+kill -9 `ps -ef| grep ./epoll_server | awk '{print $2}'`

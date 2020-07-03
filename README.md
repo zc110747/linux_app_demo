@@ -33,6 +33,18 @@ int getopt (int ___argc, char *const *___argv, const char *__shortopts);
 后续计划添加map, set, deque, tree等。  
 stl的具体接口说明在下级目录完善  
 
+# epoll/ 事件触发驱动实现
+```cpp
+//创建epoll事件句柄
+int epoll_create (int __size);
+//操作epoll事件的应用接口
+int epoll_ctl (int __epfd, int __op, int __fd, struct epoll_event *__event
+//等待epoll事件触发的接口
+int epoll_wait (int __epfd, struct epoll_event *__events, int __maxevents, int __timeout);
+//关闭epoll事件描述符,释放资源
+int close (int __fd);
+```
+
 ## fifo/ Linux命名先入先出管道通讯  
 用于Linux进程间通讯的命名先入先出管道
 ```cpp
