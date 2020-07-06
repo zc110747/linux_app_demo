@@ -28,11 +28,6 @@ time_t time (time_t *__timer);
 int getopt (int ___argc, char *const *___argv, const char *__shortopts);
 ```
 
-## cplusplus/ 和C++相关的demo例程，包含常用C++库以及STL等  
-目前包含vector, list, string,
-后续计划添加map, set, deque, tree等。  
-stl的具体接口说明在下级目录完善  
-
 # epoll/ 事件触发驱动实现
 ```cpp
 //创建epoll事件句柄
