@@ -89,8 +89,7 @@ int main(void)
             printf("socket process success\r\n");
             //TCP四次握手断开
             close(client_fd);
-        }
-              
+        }         
     }    
     close(socket_fd);     
     return 0;

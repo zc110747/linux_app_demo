@@ -6,10 +6,12 @@
  * asctime/asctime_r 根据本地时间生成时间字符串
  * ctime/ctime_r 根据日历时间生成时间字符串
  * mktime 将带时区的时间转换成秒数
+ * gettimeofday/settimeofday 获取/设置当前的精确时间， tz用于保存时区结果
 ************************************************************/
 #include <unistd.h>
 #include <stdio.h>
 #include <time.h>
+#include <sys/time.h>
 
 int main(int argc, char* argv[])
 {
@@ -43,4 +45,14 @@ int main(int argc, char* argv[])
     //将计算好的time转换为秒数 -- 带时区
     tim_cur = mktime(ptm_val);
     printf("time:%ld, %ld\n", tim, tim_cur);
+
+    struct timeval cur_tv;
+    struct timezone cur_tz;
+    
+    //读取当前的时间(每天中的时分秒)
+    gettimeofday(&cur_tv, &cur_tz);
+    printf("sec:%d, usec:%d\r\n", cur_tv.tv_sec, cur_tv.tv_usec);
+    printf("minuteswest:%d, dsttime:%d\r\n", cur_tz.tz_minuteswest, cur_tz.tz_dsttime); 
+    settimeofday(&cur_tv, &cur_tz);
+
 }   
