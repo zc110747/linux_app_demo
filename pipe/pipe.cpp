@@ -34,19 +34,24 @@ int main(int argc, char* argv[])
     }
     else if(pid == 0)
     {
-        close(fd[1]);
         int readsize;
 	    readsize = read(fd[0], buf, sizeof(buf));
         if(write(STDOUT_FILENO, buf, readsize)<0)
         {
             printf("write std out fileNO failed\n");
         }
+        
+        if(write(fd[1], "father test for pipe\n", strlen("father test for pipe\n")) > 0)
+        {
+            wait(NULL);
+        }
+
         close(fd[0]);
+        close(fd[1]);
     }
     else
     {
-        close(fd[0]);
-        if(write(fd[1], "test for pipe\n", strlen("test for pipe\n"))>0)
+        if(write(fd[1], "child test for pipe\n", strlen("child test for pipe\n"))>0)
         {
             wait(NULL);
         }
@@ -54,6 +59,15 @@ int main(int argc, char* argv[])
         {
             printf("write pipe failed\n");
         }
+
+        int readsize;
+	    readsize = read(fd[0], buf, sizeof(buf));
+        if(write(STDOUT_FILENO, buf, readsize)<0)
+        {
+            printf("write std out fileNO failed\n");
+        }
+
+        close(fd[0]);
         close(fd[1]);
     }
     
