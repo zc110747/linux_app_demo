@@ -2,12 +2,18 @@
  * 说明: 文件读写接口
  * 文件I/O主要涉及接口包含
  * open 打开文件描述符
+ *      int open(const char *pathname, int flags);
+ *      int open(const char *pathname, int flags, mode_t mode);
+ *          flags:表示文件打开方式，常用的O_RDONLY, O_WRONLY, O_RDWR，另外
+ *                O_NONBLOCK、O_NDELAY指定非堵塞，O_TRUNC指定文件重新写入，原数据丢弃。
+ *          mode:指定文件的权限位，受umask的影响
+ * close 关闭文件描述符
  * lseek 移动文件指针位置,进行偏移
  * ioctl 操作硬件设备的命令
  * read  读取文件数据或者设备内数据
  * write 将数据写入文件缓冲区或者设备中
- * close 关闭文件
 ************************************************************/
+
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>

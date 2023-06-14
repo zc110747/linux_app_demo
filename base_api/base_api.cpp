@@ -39,7 +39,7 @@ int process_dir(void)
     if(pDir == NULL){
         mkdir(TEST_DIR1, 0755);
     }else{
-        printf("open %s succes\n", TEST_DIR1);
+        printf("open %s success\n", TEST_DIR1);
         closedir(pDir);
     }
     return 0;
@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
     //perror
     fprintf(stderr, "EACCESS:%s\n", strerror(EACCES));
     errno = ENOENT;
-    perror("test error:");
+    perror("test error");
 
     time(&current_time[1]);
     printf("timer is:%ds\n", (int)(current_time[1]-current_time[0]));
