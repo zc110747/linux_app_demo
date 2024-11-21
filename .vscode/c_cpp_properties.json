@@ -3,7 +3,6 @@
         {
             "name": "Win32",
             "includePath": [
-                "${env.includePATH}",
                 "${workspaceFolder}/**"
             ],
             "defines": [
@@ -18,10 +17,10 @@
                 "_XOPEN_SOURCE"
             ],
             "windowsSdkVersion": "8.1",
-            "compilerPath": "D:/Software/mingw64/bin/g++.exe",
-            "cStandard": "c11",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "gcc-x64"
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c99",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "gcc-x86"
         }
     ],
     "version": 4
